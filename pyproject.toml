@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rapidexec"
+description = ""
+dependencies = [
+    "rich ==13.3.5",
+    "docker ==6.1.2",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+    "black ==23.3.0",
+    "coverage ==7.2.5",
+    "pytest ==7.3.1",
+    "pytest-asyncio ==0.21.0",
+    "pytest-sugar ==0.9.7",
+    "ruff ==0.0.267",
+    "build ==0.10.0",
+]
+
+[tool.hatch.version]
+path = "rapidexec/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rapidexec"]
+
+[tool.hatchling]
+allow-direct-references = true
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+include = '\.pyi?$'
+extend-exclude = """
+^(.*/)?test_files/.*$
+^(.*/)?test_data/.*$
+"""
+
+[tool.ruff]
+format = "grouped"
+line-length = 88
+extend-exclude = [
+    ".media",
+    ".static",
+    ".test_data",
+    ".test_files",
+    "__init__.py",
+]
+select = [
+    "E",
+    "F",
+]
+ignore = [
+    "E501",
+    "B008",
+    "C901",
+    "F405",
+    "F841",
+]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+target-version = "py311"
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.isort]
+force-to-top = ["rapidexec"]
+known-first-party = ["rapidexec"]
