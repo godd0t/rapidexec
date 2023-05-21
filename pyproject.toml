@@ -4,12 +4,26 @@ build-backend = "hatchling.build"
 
 [project]
 name = "rapidexec"
-description = ""
+description = "A simple, fast, and flexible way to execute commands in a Docker container."
 dependencies = [
     "rich ==13.3.5",
     "docker ==6.1.2",
 ]
 dynamic = ["version"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Environment :: Web Environment",
+    "Framework :: Django :: 4.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Topic :: Utilities",
+]
+readme = "README.md"
+
 
 [project.optional-dependencies]
 dev = [
