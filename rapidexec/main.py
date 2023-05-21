@@ -13,3 +13,4 @@ def cli(ctx):
 if __name__ == "__main__":
     # Accept all options
     cli()
+

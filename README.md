@@ -39,7 +39,19 @@ rapidexec [OPTIONS] COMMAND [ARGS]...
 | start | Start a container. |
 | stop | Stop a container. |
 | update | Update a container in the config file. |
+| docker-ps | List all running containers. |
+| docker-rm | Remove a container. |
+| docker-run | Run a command in a container. |
+| docker-start | Start a container. |
+| docker-stop | Stop a container. |
 
+
+### Example output
+
+```bash
+$ rapidexec docker-ps
+```
+![image](https://github.com/godd0t/rapidexec/assets/58993673/1f7847c3-73cc-42ab-97da-2698aa1387a5)
 
 ## Config file
 

@@ -52,7 +52,7 @@ Homepage = "https://github.com/godd0t/rapidexec"
 file = "LICENSE"
 
 [project.scripts]
-devblaze = "rapidexec.main:cli"
+rapidexec = "rapidexec.main:cli"
 
 [tool.black]
 line-length = 88
