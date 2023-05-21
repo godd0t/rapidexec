@@ -45,6 +45,15 @@ packages = ["rapidexec"]
 [tool.hatchling]
 allow-direct-references = true
 
+[project.urls]
+Homepage = "https://github.com/godd0t/rapidexec"
+
+[project.license]
+file = "LICENSE"
+
+[project.scripts]
+devblaze = "rapidexec.main:cli"
+
 [tool.black]
 line-length = 88
 target-version = ["py311"]
