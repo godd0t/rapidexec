@@ -5,11 +5,24 @@ RapidExec is a command line tool that allows you to easier access docker contain
 
 ## Installation
 
-To install RapidExec, you can use pip:
+1. To install RapidExec with all dependencies, you can use the following command:
 
-```bash
-pip install rapidexec
-```
+    ```bash
+    pip install rapidexec
+    ```
+
+2. To install RapidExec with only export dependencies, you can use the following command:
+   
+    ```bash
+    pip install rapidexec[export]
+    ```
+
+3. To install RapidExec with only docker dependencies, you can use the following command:
+   
+    ```bash
+    pip install rapidexec[docker]
+    ```
+   
 
 ## Usage
 
@@ -21,61 +34,47 @@ rapidexec [OPTIONS] COMMAND [ARGS]...
 
 ### Options
 
-| Option | Description |
-| ------ | ----------- |
-| --help | Show this message and exit. |
+| Option    | Description                |
+|-----------|----------------------------|
+| --help    | Shows usage information    |
 | --version | Show the version and exit. |
-| --config PATH | Path to the config file. |
-| --debug | Enable debug mode. |
 
 ### Commands
 
-| Command | Description |
-| ------- | ----------- |
-| add | Add a new container to the config file. |
-| list | List all containers. |
-| remove | Remove a container from the config file. |
-| run | Run a command in a container. |
-| start | Start a container. |
-| stop | Stop a container. |
-| update | Update a container in the config file. |
-| docker-ps | List all running containers. |
-| docker-rm | Remove a container. |
-| docker-run | Run a command in a container. |
-| docker-start | Start a container. |
-| docker-stop | Stop a container. |
+| Command      | Description                                                    |
+|--------------|----------------------------------------------------------------|
+| docker-ps    | List all running containers.                                   |
+| docker-logs  | Show the logs of a container.                                  |
+| compose-logs | Show the logs of a docker-compose service.                     |
+| export       | Export pyproject.toml dependencies to a requirements.txt file. |
 
 
 ### Example output
 
+#### docker-ps
 ```bash
 $ rapidexec docker-ps
 ```
-![image](https://github.com/godd0t/rapidexec/assets/58993673/1f7847c3-73cc-42ab-97da-2698aa1387a5)
+![image](./docs/images/docker-ps.png)
 
-## Config file
+#### export
 
-The config file is a JSON file that contains all the containers that you want to use with RapidExec. The default location of the config file is `~/.config/rapidexec/config.json`. You can change the location of the config file with the `--config` option.
+1. Scenario: toml file pyproject.toml and output file requirements.txt
+    ```bash
+    $ rapidexec export -f pyproject.toml -o requirements.txt
+    ```
+    ![image](./docs/images/export.png)
 
-### Example
-
-```json
-{
-    "containers": [
-        {
-            "name": "nginx",
-            "image": "nginx:latest",
-            "command": "nginx -g 'daemon off;'",
-            "ports": [
-                {
-                    "host": 80,
-                    "container": 80
-                }
-            ]
-        }
-    ]
-}
-```
+2. Scenario: exclude optional groups
+    ```bash
+    $ rapidexec export --exclude dev,export
+    ```
+    ![image](./docs/images/export-exclude.png)
+3. Scenario: include only specific optional groups
+    ```bash
+    $ rapidexec export --include dev
+    ```
+    ![image](./docs/images/export-include.png)
 
 
 ## License

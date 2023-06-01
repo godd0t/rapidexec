@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABCMeta
 from dataclasses import dataclass
-from typing import List, Dict, Tuple, Iterable
+from typing import List, Dict, Iterable
 
 from click import Option
 from rich.console import Console
@@ -44,7 +44,11 @@ class BaseCommand(Command):
     Base class for all commands
     """
 
-    def __init__(self, headers: List[Tuple[str, str]], filters: List[Filter], **kwargs):
+    def __init__(self, headers=None, filters=None, **kwargs):
+        if filters is None:
+            filters = []
+        if headers is None:
+            headers = []
         self.headers = headers
         self.filters = filters
         self.kwargs = kwargs

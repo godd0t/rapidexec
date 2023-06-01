@@ -1,4 +1,4 @@
-PROJECTNAME := "devblaze"
+PROJECTNAME := "rapidexec"
 
 define HELP
 

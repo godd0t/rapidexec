@@ -5,11 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "rapidexec"
 description = "A simple, fast, and flexible way to execute commands in a Docker container."
-dependencies = [
-    "rich ==13.3.5",
-    "docker ==6.1.2",
-]
-dynamic = ["version"]
+readme = "README.md"
 classifiers = [
     "Development Status :: 1 - Planning",
     "Environment :: Web Environment",
@@ -22,19 +18,34 @@ classifiers = [
     "Topic :: Software Development :: Version Control :: Git",
     "Topic :: Utilities",
 ]
-readme = "README.md"
+dependencies = [
+    "click ==8.1.3",
+    "rich ==13.4.1",
+]
+dynamic = ["version"]
 
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/godd0t/rapidexec"
+
+[project.scripts]
+rapidexec = "rapidexec.main:cli"
 
 [project.optional-dependencies]
 dev = [
     "black ==23.3.0",
-    "coverage ==7.2.5",
+    "coverage ==7.2.7",
     "pytest ==7.3.1",
     "pytest-asyncio ==0.21.0",
     "pytest-sugar ==0.9.7",
-    "ruff ==0.0.267",
+    "ruff ==0.0.270",
     "build ==0.10.0",
+    "twine ==4.0.2",
 ]
+docker = ["docker ==6.1.2"]
+export = ["toml ==0.10.2"]
 
 [tool.hatch.version]
 path = "rapidexec/__init__.py"
@@ -44,15 +55,6 @@ packages = ["rapidexec"]
 
 [tool.hatchling]
 allow-direct-references = true
-
-[project.urls]
-Homepage = "https://github.com/godd0t/rapidexec"
-
-[project.license]
-file = "LICENSE"
-
-[project.scripts]
-rapidexec = "rapidexec.main:cli"
 
 [tool.black]
 line-length = 88
